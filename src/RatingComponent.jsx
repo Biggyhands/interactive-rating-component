@@ -1,20 +1,23 @@
 import React, { useState } from 'react'
 import { SurveyInfoComponent } from './components/SurveyInfoComponent'
 import { SurveyTyComponent } from './components/SurveyTyComponent'
+import { useRatingComponent } from './hooks/useRatingComponent'
+
 
 export const RatingComponent = () => {
-  const [survey, setSurvey] = useState(0)  
-  const [surveyToggle, setSurveyToggle] = useState(true)
 
 
-  
+const {arraySurvey, selectOptionBy, getSurveySelected, setShowSuccessfullScreen, showSuccessfullScreen} =  useRatingComponent()
+
+
+
   return (
     <>
 
        {
-            surveyToggle 
-           ?   <SurveyInfoComponent setSurveyToggle={setSurveyToggle} setSurvey={setSurvey} />
-          : <SurveyTyComponent survey={survey}/>
+            showSuccessfullScreen 
+           ?  <SurveyTyComponent survey={getSurveySelected().label}/> 
+          : <SurveyInfoComponent setShowSuccessfullScreen={setShowSuccessfullScreen} selectOptionBy={selectOptionBy} arraySurvey={arraySurvey} />
         }
         
     </>

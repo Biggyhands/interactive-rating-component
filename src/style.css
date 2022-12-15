@@ -143,8 +143,19 @@ font-size: 15px;
   border:solid 1px var(--Dark-Blue); 
   color:var(--Light-gray);  
 }
-.option-button:hover{
+
+.option-button-selected{
+  width: 40px;
+  height: 40px;
+  border-radius:20px ;
   background-color: var(--Orange);
+  border:solid 1px var(--Dark-Blue); 
+  color:var(--White); 
+}
+
+
+.option-button:hover{
+  background-color: var(--Light-gray);
   color:var(--White);
   cursor:pointer;
 }

@@ -1,32 +1,8 @@
 
 
 
-export const SurveyInfoComponent = ({setSurveyToggle, setSurvey}) => {
+export const SurveyInfoComponent = ({setShowSuccessfullScreen, selectOptionBy, arraySurvey}) => {
   
-
-
-    const handleVote1 = () => {
-        setSurvey(1);
-
-    };
-    const handleVote2 = () => {
-        setSurvey(2);
-
-    };
-    const handleVote3 = () => {
-        setSurvey(3);
-
-    };
-    const handleVote4 = () => {
-        setSurvey(4);
-    };
-    const handleVote5 = () => {
-        setSurvey(5);
-
-    };
-    const handleSwitcher = () =>{
-        setSurveyToggle(false)
-    }
 
 
     return (
@@ -45,15 +21,14 @@ export const SurveyInfoComponent = ({setSurveyToggle, setSurvey}) => {
         <form className='card-form-container'>
          <div className='option-container'>
 
-         <button type="button" onClick={handleVote1} className='option-button'>1</button>
-         <button type="button" onClick={handleVote2} className='option-button'>2</button>
-         <button type="button" onClick={handleVote3} className='option-button'>3</button>
-         <button type="button" onClick={handleVote4} className='option-button'>4</button>
-         <button type="button" onClick={handleVote5} className='option-button'>5</button>
-
+         { arraySurvey.map((survey, idx) => (
+             <button type="button" key={idx.toString()} onClick={() => selectOptionBy(survey)} className={ survey.selected ? 'option-button-selected':'option-button'} >{survey.label}</button>
+             
+         ))}
+        
           </div> 
         <div className='card-submit-button-container'>
-        <button type="button" onClick={handleSwitcher} className='card-submit-button'>SUBMIT</button>
+        <button type="button" onClick={() => setShowSuccessfullScreen(true)} className='card-submit-button'>SUBMIT</button>
         </div>
         </form >
         </div>
